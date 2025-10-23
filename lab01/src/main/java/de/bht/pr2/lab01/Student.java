@@ -1,7 +1,7 @@
 package de.bht.pr2.lab01;
 
 public class Student {
-
+System.out.print("hallo");
   //-------------------------------------------
   // Attribute
   private String name = "";
