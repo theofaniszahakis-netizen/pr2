@@ -7,10 +7,10 @@
   <packaging>pom</packaging>
   <version>1.0.0</version>
 
-  <properties>
-    <maven.compiler.source>14</maven.compiler.source>
-    <maven.compiler.target>14</maven.compiler.target>
-  </properties>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
   <name>pr2 - Programmierung II</name>
 
   <build>
