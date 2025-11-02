@@ -22,30 +22,42 @@ public class Student {
 
   public Student(String dataRow) throws Exception {
         // TODO: Here goes your code ...
+
           String[] Data = dataRow.split(",");
           if (Data.length != 4) {
               throw new StudentParseException(dataRow);
           }
-          this.name = Data[0];
+          this.name = Data[0].trim();
           try {
               this.registrationNumber = Integer.parseInt(Data[1]);
           } catch (NumberFormatException e) {
-              throw new StudentParseException(dataRow);
+              throw new RegistrationNumberException(this.registrationNumber);
           }
-          this.courseOfStudies = Data[2];
+          this.courseOfStudies = Data[2].trim();
+          int tuiutionFee = Integer.parseInt(Data[3]);
+          if(tuiutionFee < TUITION_FEE) {
+              throw new NotPaidTuitionFeeException(TUITION_FEE-tuiutionFee);
+          }
           // this.Tuition_Fee=Integer.parseInt(Data[3]);
 
           if (String.valueOf(this.registrationNumber).length() != 5) {
               throw new RegistrationNumberException(this.registrationNumber);
           }
 
-          if (!courseOfStudies.equals("Medieninformatik") && (!courseOfStudies.equals("Technische Informatik") && (!courseOfStudies.equals("Druck- und Medientechnik") && (!courseOfStudies.equals("Screen Based Media") && (!courseOfStudies.equals("Musik und Tanz")))))) {
+          if (!courseOfStudies.equals("Medieninformatik") && (!courseOfStudies.equals("Technische Informatik") && (!courseOfStudies.equals("Druck- und Medientechnik") && (!courseOfStudies.equals("Screen Based Media") )))) {
               throw new WrongCourseOfStudiesException(this.courseOfStudies);
           }
 
       }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", matrikelnummer=" + registrationNumber +
+                ", studiengang='" + courseOfStudies + '\'' +
+                TUITION_FEE;
+    }
   }
 
 

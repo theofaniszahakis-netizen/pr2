@@ -42,21 +42,23 @@ public class Lab1Main {
         List<Student> students = new ArrayList<Student>();
 
         // Parse each line ...
-        try {
-            for (String datenZeile : data) {
-                // ... and try to create a Student object
-                Student student = new Student(datenZeile);
-                students.add(student);
-            }
 
+            for (String datenZeile : data) {
+                try {
+                    // ... and try to create a Student object
+                    Student student = new Student(datenZeile);
+                    students.add(student);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             // Print all students which could be parsed
             System.out.println("List of Student objects:");
             for (Student student : students) {
                 System.out.println(student);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+
         }
 
     }
-}
