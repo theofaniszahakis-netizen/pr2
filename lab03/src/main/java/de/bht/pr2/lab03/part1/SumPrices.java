@@ -3,6 +3,8 @@ package de.bht.pr2.lab03.part1;
 public class SumPrices {
 
   public static void main(String[] args) {
+
+
     /* Das Ergebnis der Berechnungen sollte sein:
 
     Summe Buch:     € 381.88

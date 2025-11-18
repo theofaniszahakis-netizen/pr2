@@ -1,4 +1,6 @@
 package de.bht.pr2.lab02.part1;
+package de.bht.pr2.lab01;
+
 
 public class RegistrationNumberException extends Exception {
 

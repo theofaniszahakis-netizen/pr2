@@ -49,7 +49,9 @@ public class Lab1Main {
                     Student student = new Student(datenZeile);
                     students.add(student);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                  //  e.printStackTrace();
+
+                    System.out.println(e.getMessage());
                 }
             }
             // Print all students which could be parsed
