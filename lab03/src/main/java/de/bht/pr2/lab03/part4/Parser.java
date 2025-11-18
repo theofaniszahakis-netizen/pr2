@@ -34,7 +34,7 @@ for(String x :solddBooksData)
                 list.add(hoerbuch);
             }else{
                 Buecher buch =new Buecher(title,typ,preis,auflage);
-                list.add(buch);
+                list.add(buch);//S
 
 
             }
