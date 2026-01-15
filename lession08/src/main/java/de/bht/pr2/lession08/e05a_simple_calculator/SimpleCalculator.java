@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Primitiver Calculator für SU 1 - START-VERSION.
+ * Primitiver Calculator für SU 8 - START-VERSION.
  * Demonstriert grundlegendes Event-Handling ohne MVP-Pattern oder FXML.
  *
  * HINWEIS: Dieser Calculator ist absichtlich unvollständig!
@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  * - Mini-Aufgabe 1: Clear-Button hinzufügen
  * - Mini-Aufgabe 2: Fehlerbehandlung verbessern
  *
- * Die fertige Lösung findet sich in: su1_e05b_simple_calculator_loesung
+ * Die fertige Lösung findet sich in: e05b_simple_calculator_loesung
  */
 public class SimpleCalculator extends Application {
 
