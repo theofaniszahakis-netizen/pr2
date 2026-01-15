@@ -42,10 +42,12 @@
     <module>lession06</module>
     <module>lession07</module>
     <module>lession08</module>
+    <module>lession09</module>
     <module>lab01</module>
     <module>lab02</module>
     <module>lab03</module>
     <module>lab04</module>
+    <module>lab05</module>
   </modules>
 
 </project>
