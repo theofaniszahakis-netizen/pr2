@@ -36,7 +36,6 @@ public class SimpleCalculator extends Application {
 
         // Titel
         Label titleLabel = new Label("Einfacher Taschenrechner");
-        titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         // Eingabebereich mit GridPane
         GridPane inputGrid = new GridPane();
@@ -72,12 +71,10 @@ public class SimpleCalculator extends Application {
 
         // Berechnen-Button
         Button calculateButton = new Button("Berechnen");
-        calculateButton.setStyle("-fx-font-weight: bold;");
         calculateButton.setOnAction(e -> calculate());
 
         // Ergebnis
         resultLabel = new Label("Ergebnis: ");
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #f0f0f0;");
 
         root.getChildren().addAll(titleLabel, inputGrid, calculateButton, resultLabel);
 

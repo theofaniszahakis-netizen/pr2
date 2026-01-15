@@ -34,7 +34,6 @@ public class SimpleCalculator extends Application {
 
         // Titel
         Label titleLabel = new Label("Einfacher Taschenrechner");
-        titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         // Eingabebereich mit GridPane
         GridPane inputGrid = new GridPane();
@@ -73,7 +72,6 @@ public class SimpleCalculator extends Application {
         buttonBox.setAlignment(Pos.CENTER);
 
         Button calculateButton = new Button("Berechnen");
-        calculateButton.setStyle("-fx-font-weight: bold;");
         calculateButton.setOnAction(e -> calculate());
 
         // LÖSUNG Mini-Aufgabe 1: Clear-Button
@@ -84,7 +82,6 @@ public class SimpleCalculator extends Application {
 
         // Ergebnis
         resultLabel = new Label("Ergebnis: ");
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #f0f0f0;");
 
         root.getChildren().addAll(titleLabel, inputGrid, buttonBox, resultLabel);
 
@@ -139,7 +136,6 @@ public class SimpleCalculator extends Application {
             }
 
             resultLabel.setText("Ergebnis: " + resultText);
-            resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ccffcc;");
 
         } catch (NumberFormatException e) {
             // LÖSUNG: Ungültige Zahl abfangen
@@ -155,7 +151,6 @@ public class SimpleCalculator extends Application {
      */
     private void showError(String message) {
         resultLabel.setText("Fehler: " + message);
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
     }
 
     /**
@@ -166,7 +161,6 @@ public class SimpleCalculator extends Application {
         operand2Field.clear();
         operatorCombo.setValue("+");
         resultLabel.setText("Ergebnis: ");
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #f0f0f0;");
     }
 
     public static void main(String[] args) {
