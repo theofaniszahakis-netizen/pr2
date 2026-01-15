@@ -1,4 +1,4 @@
-package de.bht.pr2.lession08.su1_e02_controls;
+package de.bht.pr2.lession08.su1_e03_controls;
 
 /**
  * Launcher-Klasse für die Controls-Demo.

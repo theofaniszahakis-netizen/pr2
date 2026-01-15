@@ -3,21 +3,25 @@ package de.bht.pr2.lession08.su2_e02_calculator.model;
 import de.bht.pr2.lession08.su2_e02_calculator.presenter.Operator;
 
 /**
- * Model-Klasse für den Calculator.
+ * Model-Klasse für den Ganzzahlen-Calculator.
  * Enthält die Geschäftslogik und den Zustand des Calculators.
  *
  * ÜBUNG 2: Diese Klasse ist unvollständig!
  * Studierende sollen die fehlende Logik implementieren.
+ *
+ * Hinweis: Der Calculator arbeitet mit Ganzzahlen (long).
+ * Das Komma-Feature ist für eine mögliche Erweiterung vorbereitet,
+ * aber die Kernlogik soll zunächst nur mit ganzen Zahlen arbeiten.
  */
 public class CalculatorModel {
     public static final String INITIAL_VALUE = "0";
-    private double number1;
-    private double number2;
+    private long number1;
+    private long number2;
     private String display;
 
     public CalculatorModel() {
-        this.number1 = 0.0;
-        this.number2 = 0.0;
+        this.number1 = 0;
+        this.number2 = 0;
         this.display = INITIAL_VALUE;
     }
 
@@ -33,13 +37,13 @@ public class CalculatorModel {
         }
     }
 
+    /**
+     * Fügt ein Komma hinzu (für zukünftige Dezimalzahl-Erweiterung).
+     * In der Ganzzahl-Version hat diese Methode keine Funktion.
+     */
     public void appendComma() {
-        if (display.equals(INITIAL_VALUE)) {
-            return;
-        }
-        if (!display.contains(",")) {
-            display = display + ",";
-        }
+        // Für Ganzzahlen: Komma wird ignoriert
+        // TODO (Optional): Für Dezimalzahlen implementieren
     }
 
     /**
@@ -58,8 +62,8 @@ public class CalculatorModel {
 
     public void clear() {
         display = INITIAL_VALUE;
-        number1 = 0.0;
-        number2 = 0.0;
+        number1 = 0;
+        number2 = 0;
     }
 
     public void deleteLastDigit() {

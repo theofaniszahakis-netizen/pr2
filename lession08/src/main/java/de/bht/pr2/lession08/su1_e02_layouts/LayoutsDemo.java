@@ -1,4 +1,4 @@
-package de.bht.pr2.lession08.su1_e03_layouts;
+package de.bht.pr2.lession08.su1_e02_layouts;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

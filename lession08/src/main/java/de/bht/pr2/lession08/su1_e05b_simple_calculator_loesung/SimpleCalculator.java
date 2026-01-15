@@ -1,4 +1,4 @@
-package de.bht.pr2.lession08.su1_e05_simple_calculator;
+package de.bht.pr2.lession08.su1_e05b_simple_calculator_loesung;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -12,8 +12,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Einfacher Calculator für SU 1.
- * Demonstriert grundlegendes Event-Handling ohne MVP-Pattern oder FXML.
+ * Primitiver Calculator für SU 1 - LÖSUNG.
+ * Enthält alle Erweiterungen aus den Mini-Aufgaben:
+ * - Mini-Aufgabe 1: Clear-Button
+ * - Mini-Aufgabe 2: Vollständige Fehlerbehandlung
+ *
+ * Die Start-Version (ohne diese Features) findet sich in: su1_e05a_simple_calculator
  */
 public class SimpleCalculator extends Application {
 
@@ -64,7 +68,7 @@ public class SimpleCalculator extends Application {
         inputGrid.add(operand2Label, 0, 2);
         inputGrid.add(operand2Field, 1, 2);
 
-        // Buttons
+        // Buttons (Mini-Aufgabe 1: Clear-Button hinzugefügt)
         HBox buttonBox = new HBox(10);
         buttonBox.setAlignment(Pos.CENTER);
 
@@ -72,6 +76,7 @@ public class SimpleCalculator extends Application {
         calculateButton.setStyle("-fx-font-weight: bold;");
         calculateButton.setOnAction(e -> calculate());
 
+        // LÖSUNG Mini-Aufgabe 1: Clear-Button
         Button clearButton = new Button("Löschen");
         clearButton.setOnAction(e -> clear());
 
@@ -91,6 +96,7 @@ public class SimpleCalculator extends Application {
 
     /**
      * Führt die Berechnung durch.
+     * LÖSUNG Mini-Aufgabe 2: Vollständige Fehlerbehandlung
      */
     private void calculate() {
         try {
@@ -98,10 +104,9 @@ public class SimpleCalculator extends Application {
             String input1 = operand1Field.getText().trim();
             String input2 = operand2Field.getText().trim();
 
-            // Prüfen ob Eingaben vorhanden
+            // LÖSUNG: Prüfen ob Eingaben vorhanden
             if (input1.isEmpty() || input2.isEmpty()) {
-                resultLabel.setText("Fehler: Bitte beide Zahlen eingeben!");
-                resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
+                showError("Bitte beide Zahlen eingeben!");
                 return;
             }
 
@@ -116,6 +121,7 @@ public class SimpleCalculator extends Application {
                 case "-" -> num1 - num2;
                 case "*" -> num1 * num2;
                 case "/" -> {
+                    // LÖSUNG: Division durch 0 abfangen
                     if (num2 == 0) {
                         throw new ArithmeticException("Division durch 0!");
                     }
@@ -136,16 +142,24 @@ public class SimpleCalculator extends Application {
             resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ccffcc;");
 
         } catch (NumberFormatException e) {
-            resultLabel.setText("Fehler: Ungültige Zahl eingegeben!");
-            resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
+            // LÖSUNG: Ungültige Zahl abfangen
+            showError("Ungültige Zahl eingegeben!");
         } catch (ArithmeticException e) {
-            resultLabel.setText("Fehler: " + e.getMessage());
-            resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
+            // LÖSUNG: Arithmetische Fehler abfangen
+            showError(e.getMessage());
         }
     }
 
     /**
-     * Löscht alle Eingaben und das Ergebnis.
+     * Zeigt eine Fehlermeldung an.
+     */
+    private void showError(String message) {
+        resultLabel.setText("Fehler: " + message);
+        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
+    }
+
+    /**
+     * LÖSUNG Mini-Aufgabe 1: Löscht alle Eingaben und das Ergebnis.
      */
     private void clear() {
         operand1Field.clear();

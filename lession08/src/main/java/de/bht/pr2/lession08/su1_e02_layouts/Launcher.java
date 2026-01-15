@@ -1,4 +1,4 @@
-package de.bht.pr2.lession08.su1_e03_layouts;
+package de.bht.pr2.lession08.su1_e02_layouts;
 
 /**
  * Launcher-Klasse für die Layouts-Demo.

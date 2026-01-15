@@ -2,11 +2,13 @@ package de.bht.pr2.lession08.su1_uebung1;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,9 +19,15 @@ import javafx.stage.Stage;
  *
  * Aufgaben für Studierende:
  * 1. Erweitern Sie die Operatoren um Modulo (%), Quadratwurzel (√) etc.
- * 2. Implementieren Sie die addToHistory()-Methode
+ * 2. Der "Löschen" Button soll alle Eingabefelder und das Ergebnis zurücksetzen.
+ * 2. Implementieren Sie die Berechnungshistorie:
+ *    3.1 Fügen Sie ein Label "Berechnungs-Historie:" hinzu
+ *    3.2 Fügen Sie eine ListView hinzu, um die Historie anzuzeigen
+ *    3.3 Fügen Sie einen Button "Historie löschen" hinzu, um die Historie zu leeren
+ *    3.4 Informieren Sie sich über ObservableList und ListView in JavaFX
  * 3. Verbessern Sie die Fehlerbehandlung
- * 4. Optional: Fügen Sie Tastatureingaben hinzu
+ * 4. Überraschen Sie Ihren Dozenten mit weiteren Features!
+ *
  */
 public class CalculatorExercise extends Application {
 
@@ -27,10 +35,6 @@ public class CalculatorExercise extends Application {
     private TextField operand2Field;
     private ComboBox<String> operatorCombo;
     private Label resultLabel;
-
-    // Historie-Liste
-    private ListView<String> historyListView;
-    private ObservableList<String> historyItems;
 
     @Override
     public void start(Stage primaryStage) {
@@ -40,7 +44,6 @@ public class CalculatorExercise extends Application {
 
         // Titel
         Label titleLabel = new Label("Calculator mit Historie");
-        titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
 
         // Eingabebereich
         GridPane inputGrid = createInputArea();
@@ -50,28 +53,12 @@ public class CalculatorExercise extends Application {
 
         // Ergebnis
         resultLabel = new Label("Ergebnis: ");
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #f0f0f0;");
-
-        // Historie-Bereich
-        Label historyLabel = new Label("Berechnungs-Historie:");
-        historyLabel.setStyle("-fx-font-weight: bold;");
-
-        historyItems = FXCollections.observableArrayList();
-        historyListView = new ListView<>(historyItems);
-        historyListView.setPrefHeight(150);
-
-        // Löschen-Button für Historie
-        Button clearHistoryButton = new Button("Historie löschen");
-        clearHistoryButton.setOnAction(e -> historyItems.clear());
 
         root.getChildren().addAll(
             titleLabel,
             inputGrid,
             buttonBox,
-            resultLabel,
-            historyLabel,
-            historyListView,
-            clearHistoryButton
+            resultLabel
         );
 
         Scene scene = new Scene(root, 400, 500);
@@ -95,7 +82,6 @@ public class CalculatorExercise extends Application {
         inputGrid.add(operand1Field, 1, 0);
 
         // Operator
-        // TODO: Erweitern Sie diese Liste um weitere Operatoren (%, √, etc.)
         Label operatorLabel = new Label("Operator:");
         operatorCombo = new ComboBox<>(
             FXCollections.observableArrayList("+", "-", "*", "/")
@@ -121,11 +107,9 @@ public class CalculatorExercise extends Application {
         buttonBox.setAlignment(Pos.CENTER);
 
         Button calculateButton = new Button("Berechnen");
-        calculateButton.setStyle("-fx-font-weight: bold;");
         calculateButton.setOnAction(e -> calculate());
 
         Button clearButton = new Button("Löschen");
-        clearButton.setOnAction(e -> clear());
 
         buttonBox.getChildren().addAll(calculateButton, clearButton);
         return buttonBox;
@@ -148,7 +132,6 @@ public class CalculatorExercise extends Application {
             double num2 = Double.parseDouble(input2);
             String operator = operatorCombo.getValue();
 
-            // TODO: Erweitern Sie diesen Switch um weitere Operatoren
             double result = switch (operator) {
                 case "+" -> num1 + num2;
                 case "-" -> num1 - num2;
@@ -165,10 +148,7 @@ public class CalculatorExercise extends Application {
             // Ergebnis anzeigen
             String calculation = formatResult(num1, operator, num2, result);
             resultLabel.setText("Ergebnis: " + calculation);
-            resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ccffcc;");
 
-            // TODO: Implementieren Sie diese Methode
-            addToHistory(calculation);
 
         } catch (NumberFormatException e) {
             showError("Ungültige Zahl eingegeben!");
@@ -188,35 +168,10 @@ public class CalculatorExercise extends Application {
     }
 
     /**
-     * TODO: Implementieren Sie diese Methode!
-     * Fügt die Berechnung zur Historie hinzu.
-     *
-     * Hinweis: Verwenden Sie historyItems.add(...)
-     *
-     * @param calculation Die durchgeführte Berechnung als String
-     */
-    private void addToHistory(String calculation) {
-        // TODO: Fügen Sie die Berechnung zur Historie hinzu
-        // historyItems.add(calculation);
-    }
-
-    /**
      * Zeigt eine Fehlermeldung an.
      */
     private void showError(String message) {
         resultLabel.setText("Fehler: " + message);
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #ffcccc;");
-    }
-
-    /**
-     * Löscht alle Eingaben.
-     */
-    private void clear() {
-        operand1Field.clear();
-        operand2Field.clear();
-        operatorCombo.setValue("+");
-        resultLabel.setText("Ergebnis: ");
-        resultLabel.setStyle("-fx-font-size: 16px; -fx-padding: 10px; -fx-background-color: #f0f0f0;");
     }
 
     public static void main(String[] args) {
