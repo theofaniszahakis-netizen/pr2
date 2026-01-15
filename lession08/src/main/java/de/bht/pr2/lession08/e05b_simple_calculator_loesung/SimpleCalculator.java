@@ -138,7 +138,6 @@ public class SimpleCalculator extends Application {
             resultLabel.setText("Ergebnis: " + resultText);
 
         } catch (NumberFormatException e) {
-            // LÖSUNG: Ungültige Zahl abfangen
             showError("Ungültige Zahl eingegeben!");
         } catch (ArithmeticException e) {
             // LÖSUNG: Arithmetische Fehler abfangen

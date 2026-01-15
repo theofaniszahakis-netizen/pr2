@@ -46,7 +46,7 @@ public class SimpleCalculator extends Application {
         // Erste Zahl
         Label operand1Label = new Label("Zahl 1:");
         operand1Field = new TextField();
-        operand1Field.setPromptText("Erste Zahl");
+        operand1Field.setPromptText("Erste Zahl eingeben");
         operand1Field.setPrefWidth(150);
         inputGrid.add(operand1Label, 0, 0);
         inputGrid.add(operand1Field, 1, 0);
@@ -64,7 +64,7 @@ public class SimpleCalculator extends Application {
         // Zweite Zahl
         Label operand2Label = new Label("Zahl 2:");
         operand2Field = new TextField();
-        operand2Field.setPromptText("Zweite Zahl");
+        operand2Field.setPromptText("Zweite Zahl eingeben");
         operand2Field.setPrefWidth(150);
         inputGrid.add(operand2Label, 0, 2);
         inputGrid.add(operand2Field, 1, 2);
@@ -79,7 +79,7 @@ public class SimpleCalculator extends Application {
         root.getChildren().addAll(titleLabel, inputGrid, calculateButton, resultLabel);
 
         Scene scene = new Scene(root, 350, 280);
-        primaryStage.setTitle("Primitiver Calculator - JavaFX");
+        primaryStage.setTitle("Einfacher Calculator - JavaFX");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
