@@ -1,4 +1,4 @@
-package de.bht.pr2.lab04;
+package de.bht.pr2.lab05;
 
 /**
  * Launcher-Klasse für die Übung 1.

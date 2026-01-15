@@ -1,4 +1,4 @@
-package de.bht.pr2.lab04;
+package de.bht.pr2.lab05;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
